@@ -27,8 +27,18 @@
     <form action="/answer" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="question_id" value="{{ $question->id }}">
-        <input type="text" name="text" placeholder="Enter you answer">
+        <input type="text" name="text" value="{{ old('text') }}" placeholder="Enter you answer">
         <button type="submit">Submit</button>
     </form>
+
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 @endsection

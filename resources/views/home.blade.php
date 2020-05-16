@@ -8,9 +8,19 @@
 
     <form action="/question" method="post">
         {{ csrf_field() }}
-        <input type="text" name="text" placeholder="Enter you question">
+        <input type="text" name="text" value="{{ old('text') }}" placeholder="Enter you question">
         <button type="submit">Submit</button>
     </form>
+
+    @if ($errors->any())
+        <div>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <br />
     <br />
