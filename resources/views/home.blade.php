@@ -8,7 +8,7 @@
 
     <form action="/question" method="post">
         {{ csrf_field() }}
-        <input type="text" name="text" value="{{ old('text') }}" placeholder="Enter you question">
+        <input type="text" name="text" value="{{ old('text') }}" placeholder="{{ $sampleQuestion }}">
         <button type="submit">Submit</button>
     </form>
 
