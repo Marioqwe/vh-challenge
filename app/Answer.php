@@ -8,5 +8,6 @@ class Answer extends Model
 {
 
     protected $table = 'answers';
+    protected $fillable = ['text'];
 
 }
