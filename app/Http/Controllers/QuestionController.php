@@ -26,7 +26,9 @@ class QuestionController extends Controller
 
     public function view($id) {
         $question = Question::findOrFail($id);
-        $answers = Answer::where('question_id', $id)->get();
+        $answers = Answer::where('question_id', $id)
+            ->orderBy('created_at','asc')
+            ->get();
 
         return view('question', [
             'question' => $question,
