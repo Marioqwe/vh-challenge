@@ -16,7 +16,7 @@ class QuestionController extends Controller
             ->orderBy('created_at','desc')
             ->get();
 
-        return view('home', [
+        return view('questions', [
             'sampleQuestion' => $sampleQuestion,
             'questions' => $questions,
         ]);
@@ -42,7 +42,7 @@ class QuestionController extends Controller
             ->orderBy('created_at','asc')
             ->get();
 
-        return view('question', [
+        return view('question_with_id', [
             'question' => $question,
             'answers' => $answers,
         ]);
