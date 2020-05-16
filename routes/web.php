@@ -17,6 +17,6 @@ Route::get('/', 'HomeController@index');
 
 Route::post('/question', 'QuestionController@create');
 
-Route::get('/question/{id}', 'QuestionController@view');
+Route::get('/question/{id}', 'QuestionController@view')->name('question');
 
 Route::post('/question/{id}/answer', 'QuestionController@createAnswer');

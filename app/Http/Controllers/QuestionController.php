@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 use App\Answer;
 use App\Question;
@@ -20,7 +19,9 @@ class QuestionController extends Controller
         $question->text  = $request->text;
         $question->save();
 
-        return Redirect::back()->with('message', 'Question Created Successfully');
+        return redirect()
+            ->back()
+            ->with('message', 'Question Created Successfully');
     }
 
     public function view($id) {
@@ -42,7 +43,9 @@ class QuestionController extends Controller
         $answer->question_id = $request->question_id;
         $answer->save();
 
-        return Redirect::back()->with('message', 'Answer Created Successfully');
+        return redirect()
+            ->route('question', ['id' => $request->question_id])
+            ->with('message', 'Answer Created Successfully');
     }
 
 }
