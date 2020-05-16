@@ -24,7 +24,7 @@
 
     Answer the question:
 
-    <form action="/question/{{ $question->id }}/answer" method="post">
+    <form action="/questions/{{ $question->id }}/answer" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="question_id" value="{{ $question->id }}">
         <input type="text" name="text" value="{{ old('text') }}" placeholder="Enter you answer">

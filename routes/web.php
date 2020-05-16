@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@index');
 
-Route::post('/question', 'QuestionController@create');
+Route::get('/questions', 'QuestionController@all')->name('questions');
 
-Route::get('/question/{id}', 'QuestionController@view')->name('question');
+Route::post('/questions', 'QuestionController@create');
 
-Route::post('/question/{id}/answer', 'QuestionController@createAnswer');
+Route::get('/questions/{id}', 'QuestionController@view')->name('question_with_id');
+
+Route::post('/questions/{id}/answer', 'QuestionController@createAnswer');

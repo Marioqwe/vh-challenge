@@ -10,6 +10,18 @@ use App\Question;
 class QuestionController extends Controller
 {
 
+    public function all() {
+        $sampleQuestion = Question::getSampleQuestion();
+        $questions = Question::withCount(['answers'])
+            ->orderBy('created_at','desc')
+            ->get();
+
+        return view('home', [
+            'sampleQuestion' => $sampleQuestion,
+            'questions' => $questions,
+        ]);
+    }
+
     public function create(Request $request) {
         $rules = ['text' => ['bail', 'required', 'min:5', 'regex:/.*[?]$/i']];
         $messages = ['text.regex' => 'The text should end in "?".'];
@@ -46,7 +58,7 @@ class QuestionController extends Controller
         $answer->save();
 
         return redirect()
-            ->route('question', ['id' => $request->question_id])
+            ->route('question_with_id', ['id' => $request->question_id])
             ->with('message', 'Answer Created Successfully');
     }
 

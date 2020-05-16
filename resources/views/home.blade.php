@@ -6,7 +6,7 @@
 
     Ask a question:
 
-    <form action="/question" method="post">
+    <form action="/questions" method="post">
         {{ csrf_field() }}
         <input type="text" name="text" value="{{ old('text') }}" placeholder="{{ $sampleQuestion }}">
         <button type="submit">Submit</button>
@@ -32,7 +32,7 @@
     <ul>
         @foreach($questions as $question)
             <li>
-                <a href="/question/{{ $question->id }}">{{ $question->text }}</a>  <span>{{ $question->answers_count }}</span>
+                <a href="/questions/{{ $question->id }}">{{ $question->text }}</a>  <span>{{ $question->answers_count }}</span>
             </li>
         @endforeach
     </ul>
