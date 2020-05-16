@@ -11,11 +11,15 @@ class QuestionController extends Controller
 {
 
     public function create(Request $request) {
+        $rules = ['text' => ['bail', 'required', 'min:5', 'regex:/.*[?]$/i']];
+        $messages = ['text.regex' => 'The text should end in "?".'];
+        $this->validate($request, $rules, $messages);
+
         $question = new Question();
         $question->text  = $request->text;
         $question->save();
 
-        return redirect('/');
+        return redirect()->back()->with('success', 'Question Created Successfully');
     }
 
     public function view($id) {
