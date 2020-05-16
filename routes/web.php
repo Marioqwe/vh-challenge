@@ -19,4 +19,4 @@ Route::post('/question', 'QuestionController@create');
 
 Route::get('/question/{id}', 'QuestionController@view');
 
-Route::post('/answer', 'AnswerController@create');
+Route::post('/question/{id}/answer', 'QuestionController@createAnswer');
