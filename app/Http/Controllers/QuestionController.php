@@ -23,10 +23,12 @@ class QuestionController extends Controller
     }
 
     public function create(Request $request) {
+        // run validation
         $rules = ['text' => ['bail', 'required', 'min:5', 'regex:/.*[?]$/i']];
         $messages = ['text.regex' => 'The text should end in "?".'];
         $this->validate($request, $rules, $messages);
 
+        // create & save new question
         $question = new Question();
         $question->text  = $request->text;
         $question->save();
@@ -49,9 +51,11 @@ class QuestionController extends Controller
     }
 
     public function createAnswer(Request $request) {
+        // run validation
         $rules = ['text' => ['bail', 'required', 'min:5']];
         $this->validate($request, $rules);
 
+        // create & save new answer
         $answer = new Answer();
         $answer->text  = $request->text;
         $answer->question_id = $request->question_id;
