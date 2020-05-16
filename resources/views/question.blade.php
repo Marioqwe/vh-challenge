@@ -1,10 +1,10 @@
 @extends('base')
 
-@section('title', 'Homepage')
+@section('title', 'Question '.$question->id)
 
 @section('content')
 
-    <a href="/">Home</a>
+    <a href="/">Questions</a>
 
     <br />
     <br />
